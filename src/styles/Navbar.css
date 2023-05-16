@@ -1,0 +1,18 @@
+#nav-inner-container {
+    display: flex;
+    justify-content: center;
+    background-color: #f5f5f5;
+    padding: 10px;
+}
+
+.nav-item {
+    margin: 0 10px;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-item.active {
+    color: darkgray;
+    /* Customize the active link color */
+}
