@@ -20,17 +20,21 @@ const Jobs = () => {
 
 
   return (
-    allJobs.map(job => {
-      return (
-        <JobCard
-          title={job.title}
-          id={job.id}
-          salary={job.salary}
-          equity={job.equity}
-        // companyHandle={companyInfo.handle}
-        />
-      )
-    })
+    <>
+      {allJobs && allJobs.map(job => {
+        return (
+          <JobCard
+            title={job.title}
+            id={job.id}
+            salary={job.salary}
+            equity={job.equity}
+            companyHandle={job.companyHandle}
+            companyName={job.companyName}
+            location={'jobs'}
+          />
+        )
+      })}
+    </>
   )
   
   

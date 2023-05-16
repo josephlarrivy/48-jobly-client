@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import JoblyApi from "../api/api";
 import JobCard from "./JobCard";
 
-
+import '../styles/CompanyDetail.css'
 
 const CompanyDetail = () => {
 
@@ -25,19 +25,23 @@ const CompanyDetail = () => {
 
   if (companyInfo) {
     return (
-      <div key={companyInfo.handle}>
+      <div key={companyInfo.handle} id='jobs-list-container'>
         <h2>{companyInfo.name}</h2>
         <p>{companyInfo.description}</p>
         <p>{companyInfo.numEmployees}</p>
         {companyInfo.jobs && companyInfo.jobs.map(job => {
           return(
-            <JobCard
-              title={job.title}
-              id={job.id}
-              salary={job.salary}
-              equity={job.equity}
-              // companyHandle={companyInfo.handle}
-            />
+            <div className="job-card-outer-container">
+              <JobCard
+                title={job.title}
+                id={job.id}
+                salary={job.salary}
+                equity={job.equity}
+                companyHandle={companyInfo.handle}
+                companyName={companyInfo.name}
+                location={'company'}
+              />
+            </div>
           )
         })}
 

@@ -20,7 +20,7 @@ const CompanyList = () => {
 
   return (
     <div>
-      <p>company list</p>
+      <h1>Companies</h1>
       {companies && companies.map(company => {
         return (
           <CompanyCard

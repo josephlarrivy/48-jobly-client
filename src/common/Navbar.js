@@ -14,7 +14,7 @@ const NavBar = ({reload}) => {
   const logout = () => {
     removeToken()
     reload()
-    // navigate('/')
+    navigate('/')
   }
 
 

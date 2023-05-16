@@ -3,6 +3,7 @@ import useLocalStorage from "../hooks/useLocalStorage";
 import { useNavigate } from 'react-router-dom'
 import JoblyApi from "../api/api";
 
+import '../styles/Login.css'
 
 
 const Login = ({reload}) => {
@@ -52,7 +53,6 @@ const Login = ({reload}) => {
           required
         />
 
-        <br></br>
         <br></br>
         <br></br>
         

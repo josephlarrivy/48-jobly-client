@@ -1,27 +1,38 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import JoblyApi from "../api/api";
 
+import '../styles/JobCard.css'
 
-const JobCard = ({ title, id, salary, equity }) => {
+const JobCard = ({ title, id, salary, equity, companyHandle, companyName, location }) => {
 
-  // const [jobInfo, setJobInfo] = useState()
+  const navigate = useNavigate()
+  const name = companyHandle;
 
-  // const getJobDetails = async () => {
-  //   const response = await JoblyApi.getJobDetailsById(id)
-  //   console.log(response.job)
-  //   setJobInfo(response.job)
-  // }
 
-  // useEffect(() => {
-  //   console.log(id)
-  //   getJobDetails()
-  // }, [])
+  const goToCompany = () => {
+    navigate(`/companies/${name}`)
+  }
 
   return(
     <div id="job-card-container">
       <h4>{title}</h4>
-      <p>{salary}</p>
+      {location === 'jobs'
+        ? <p>{companyName}</p>
+        : <></>
+      }
+      {salary
+        ? <p>Salary ${salary}</p>
+        : <></>
+      }
+      {equity != 0
+        ? <p>Equity {equity}</p>
+        : <></>
+      }
+      {location === 'jobs'
+        ? <button onClick={() => goToCompany()}>View Company</button>
+        : <></>
+      }
       <button>Apply</button>
     </div>
   )

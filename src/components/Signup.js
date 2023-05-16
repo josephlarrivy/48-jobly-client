@@ -3,6 +3,8 @@ import useLocalStorage from "../hooks/useLocalStorage";
 import { useNavigate }  from 'react-router-dom'
 import JoblyApi from "../api/api";
 
+import '../styles/Login.css'
+
 
 const Signup = ({reload}) => {
   const [username, setUsername] = useState("");

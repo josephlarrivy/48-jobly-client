@@ -61,6 +61,12 @@ class JoblyApi {
     return response
   }
 
+  static async getUserInfo(username) {
+    // console.log(username)
+    const response = await this.request(`/users/${username}`)
+    return response
+  }
+
 
 
 
