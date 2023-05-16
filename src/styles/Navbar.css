@@ -14,5 +14,5 @@
 
 .nav-item.active {
     color: darkgray;
-    /* Customize the active link color */
+    text-decoration: overline;
 }
