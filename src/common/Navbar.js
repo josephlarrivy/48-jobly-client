@@ -1,65 +1,95 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import useLocalStorage from "../hooks/useLocalStorage";
+
 
 import '../styles/Navbar.css'
 
-const NavBar = () => {
+const NavBar = ({reload}) => {
 
   const location = useLocation();
+  const navigate = useNavigate()
+  const [token, setTokenValue, removeToken, getToken, getDecodedToken] = useLocalStorage('token');
+
+  const logout = () => {
+    removeToken()
+    reload()
+    // navigate('/')
+  }
 
 
-  return (
-    <div id="nav-inner-container">
-      <Link
-        to="/"
-        className={
-          location.pathname === "/" ? "nav-item active" : "nav-item"
-        }
-      >
-        Home
-      </Link>
-      <Link
-        to="/companies"
-        className={
-          location.pathname === "/companies" ? "nav-item active" : "nav-item"
-        }
-      >
-        Companies
-      </Link>
-      <Link
-        to="/jobs"
-        className={
-          location.pathname === "/jobs" ? "nav-item active" : "nav-item"
-        }
-      >
-        Jobs
-      </Link>
-      <Link
-        to="/login"
-        className={
-          location.pathname === "/login" ? "nav-item active" : "nav-item"
-        }
-      >
-        Login
-      </Link>
-      <Link
-        to="/signup"
-        className={
-          location.pathname === "/signup" ? "nav-item active" : "nav-item"
-        }
-      >
-        Signup
-      </Link>
-      <Link
-        to="/profile"
-        className={
-          location.pathname === "/profile" ? "nav-item active" : "nav-item"
-        }
-      >
-        Profile
-      </Link>
-    </div>
-  )
 
+  if (token) {
+    return (
+      <div id="nav-inner-container">
+        <Link
+          to="/"
+          className={
+            location.pathname === "/" ? "nav-item active" : "nav-item"
+          }
+        >
+          Home
+        </Link>
+        <Link
+          to="/companies"
+          className={
+            location.pathname === "/companies" ? "nav-item active" : "nav-item"
+          }
+        >
+          Companies
+        </Link>
+        <Link
+          to="/jobs"
+          className={
+            location.pathname === "/jobs" ? "nav-item active" : "nav-item"
+          }
+        >
+          Jobs
+        </Link>
+        <Link
+          to="/profile"
+          className={
+            location.pathname === "/profile" ? "nav-item active" : "nav-item"
+          }
+        >
+          Profile
+        </Link>
+        <p
+          className="nav-item"
+          onClick={() => logout()}
+          style={{ cursor: 'pointer' }}
+        >Log Out</p>
+      </div>
+    )
+  } else {
+    return (
+      <div id="nav-inner-container">
+        <Link
+          to="/"
+          className={
+            location.pathname === "/" ? "nav-item active" : "nav-item"
+          }
+        >
+          Home
+        </Link>
+        <Link
+          to="/login"
+          className={
+            location.pathname === "/login" ? "nav-item active" : "nav-item"
+          }
+        >
+          Login
+        </Link>
+        <Link
+          to="/signup"
+          className={
+            location.pathname === "/signup" ? "nav-item active" : "nav-item"
+          }
+        >
+          Signup
+        </Link>
+      </div>
+    )
+  }
 }
 export default NavBar;

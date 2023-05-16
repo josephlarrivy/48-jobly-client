@@ -49,6 +49,33 @@ class JoblyApi {
     return response
   }
 
+
+
+  static async registerUser(data) {
+    const response = await this.request('/auth/register', data, 'post');
+    return response
+  }
+
+  static async login(data) {
+    const response = await this.request('/auth/token', data, 'post');
+    return response
+  }
+
+
+
+
+
+
+  static async getAllJobs() {
+    const response = await this.request(`/jobs/`);
+    return response
+  }
+
+  static async getJobDetailsById(id) {
+    const response = await this.request(`/jobs/${id}`);
+    return response;
+  }
+
   // obviously, you'll add a lot here ...
 }
 

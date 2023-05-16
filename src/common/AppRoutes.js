@@ -11,41 +11,59 @@ import Signup from '../components/Signup'
 import Profile from '../components/Profile'
 import JobCard from "../components/JobCard";
 
-const AppRoutes = () => {
+import useLocalStorage from "../hooks/useLocalStorage";
 
-  return (
-    <>
-      <Routes>
-        <Route exact path="/test"
-          element={<TestApiRequests />}
-        />
-        <Route exact path="/"
-          element={<Home />}
-        />
-        <Route exact path="/companies"
-          element={<Companies />}
-        />
-        <Route exact path="/companies/:name"
-          element={<CompanyDetail />}
-        />
-        <Route exact path="/jobs"
-          element={<Jobs />}
-        />
-        <Route exact path="/jobs/:id"
-          element={<JobCard />}
-        />
-        <Route exact path="/login"
-          element={<Login />}
-        />
-        <Route exact path="/signup"
-          element={<Signup />}
-        />
-        <Route exact path="/profile"
-          element={<Profile />}
-        />
-      </Routes>
-    </>
-  )
+
+const AppRoutes = ({reload}) => {
+
+  const [token, setTokenValue, removeToken, getToken, getDecodedToken] = useLocalStorage('token');
+
+  if (token) {
+    return (
+      <>
+        <Routes>
+          <Route exact path="/"
+            element={<Home />}
+          />
+          <Route exact path="/companies"
+            element={<Companies />}
+          />
+          <Route exact path="/companies/:name"
+            element={<CompanyDetail />}
+          />
+          <Route exact path="/jobs"
+            element={<Jobs />}
+          />
+          <Route exact path="/login"
+            element={<Login reload={reload} />}
+          />
+          <Route exact path="/signup"
+            element={<Signup reload={reload} />}
+          />
+          <Route exact path="/profile"
+            element={<Profile />}
+          />
+        </Routes>
+      </>
+    )
+  } else {
+    return (
+      <>
+        <Routes>
+          <Route exact path="/"
+            element={<Home />}
+          />
+          <Route exact path="/login"
+            element={<Login reload={reload} />}
+          />
+          <Route exact path="/signup"
+            element={<Signup reload={reload} />}
+          />
+        </Routes>
+      </>
+    )
+  }
+  
 }
 
 

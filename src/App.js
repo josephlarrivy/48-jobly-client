@@ -10,14 +10,20 @@ import NavBar from './common/Navbar';
 
 function App() {
 
+  const reload = () => {
+    setTimeout(() => {
+      window.location.reload();
+    }, 400)
+  }
+
   return (
     <div className="App">
       <BrowserRouter>
       <div id='navbar-container'>
-        <NavBar />
+        <NavBar reload={reload}/>
       </div>
       <div id='page-container'>
-          <AppRoutes />
+          <AppRoutes reload={reload}/>
       </div>
       </BrowserRouter>
     </div>

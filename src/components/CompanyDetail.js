@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from 'react-router-dom'
 import JoblyApi from "../api/api";
+import JobCard from "./JobCard";
 
 
 
@@ -24,19 +25,19 @@ const CompanyDetail = () => {
 
   if (companyInfo) {
     return (
-      <div>
+      <div key={companyInfo.handle}>
         <h2>{companyInfo.name}</h2>
         <p>{companyInfo.description}</p>
         <p>{companyInfo.numEmployees}</p>
         {companyInfo.jobs && companyInfo.jobs.map(job => {
           return(
-            <div>
-              <p>{job.title}</p>
-              <p>{job.salary}</p>
-              <button
-                onClick={() => navigate(`/jobs/${job.id}`)}
-              >view job</button>
-            </div>
+            <JobCard
+              title={job.title}
+              id={job.id}
+              salary={job.salary}
+              equity={job.equity}
+              // companyHandle={companyInfo.handle}
+            />
           )
         })}
 

@@ -5,8 +5,6 @@ const CompanyCard = ({ name, description, handle, numEmployees }) => {
 
   const navigate = useNavigate()
 
-
-
   const handleClick = () => {
     console.log(handle)
     navigate(`/companies/${handle}`)
