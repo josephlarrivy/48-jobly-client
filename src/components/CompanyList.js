@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import JoblyApi from "../api/api";
+import CompaniesSearch from "./CompaniesSearch";
 import CompanyCard from "./CompanyCard";
 
 
@@ -21,6 +22,9 @@ const CompanyList = () => {
   return (
     <div>
       <h1>Companies</h1>
+      <CompaniesSearch
+        setCompanies={setCompanies}
+      />
       {companies && companies.map(company => {
         return (
           <CompanyCard

@@ -49,6 +49,35 @@ class JoblyApi {
     return response
   }
 
+  // static async getSearchCompanies(queryParams) {
+  //   const response = await this.request('/companies/', queryParams);
+  //   return response;
+  // }
+
+  static async getSearchCompanies(minEmployees, maxEmployees, query) {
+    const queryParams = {};
+
+    if (minEmployees > 0) {
+      queryParams.minEmployees = minEmployees;
+    }
+
+    if (maxEmployees > 0) {
+      queryParams.maxEmployees = maxEmployees;
+    }
+
+    if (query) {
+      queryParams.name = query;
+    }
+
+    try {
+      const response = await this.request('/companies/', queryParams);
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+
 
 
 

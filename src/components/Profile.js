@@ -81,6 +81,7 @@ const Profile = () => {
 
   return (
     <div id="register-form-main-container">
+      <h3>Edit Profile</h3>
       {/* <label>
         Username:
         <br />
