@@ -5,7 +5,7 @@
     padding: 10px;
     background-color: rgba(255, 255, 255, 0.5);
 }
-
+/* 
 #job-card-container button {
     background-color: rgba(255, 255, 255, 0.5);
     border: 1px solid black;
@@ -17,6 +17,38 @@
 #job-card-container button:hover {
     background-color: rgba(255, 255, 255, 1);
     border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+} */
+
+#job-card-container .not-clicked {
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin-left: 5px;
+}
+
+#job-card-container .not-clicked:hover {
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#job-card-container .clicked {
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 3px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin-left: 5px;
+}
+
+#job-card-container .clicked:hover {
+    background-color: rgba(255, 255, 255, 1);
+    border: 3px solid black;
     border-radius: 5px;
     padding: 10px;
     cursor: pointer;

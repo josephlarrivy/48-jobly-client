@@ -10,6 +10,12 @@ const NavBar = ({reload}) => {
   const location = useLocation();
   const navigate = useNavigate()
   const [token, setTokenValue, removeToken, getToken, getDecodedToken] = useLocalStorage('token');
+  const [username, setUsername] = useState()
+
+  useEffect(() => {
+    const decodedToken = getDecodedToken()
+    setUsername(decodedToken.username)
+  })
 
   const logout = () => {
     removeToken()
@@ -52,7 +58,7 @@ const NavBar = ({reload}) => {
             location.pathname === "/profile" ? "nav-item active" : "nav-item"
           }
         >
-          Profile
+          {username}
         </Link>
         <p
           className="nav-item"
