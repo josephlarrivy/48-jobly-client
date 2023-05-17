@@ -51,6 +51,9 @@ class JoblyApi {
 
 
 
+
+
+
   static async registerUser(data) {
     const response = await this.request('/auth/register', data, 'post');
     return response
@@ -58,14 +61,37 @@ class JoblyApi {
 
   static async login(data) {
     const response = await this.request('/auth/token', data, 'post');
+    JoblyApi.token = response.token;
     return response
   }
 
   static async getUserInfo(username) {
     // console.log(username)
-    const response = await this.request(`/users/${username}`)
+    const response = await this.request(`/users/${username}`);
+    JoblyApi.token = response.token;
     return response
   }
+
+  static async patchUserInfo(username, updatedInfo, token) {
+    const data = {
+      'username': username,
+      'password': updatedInfo.password
+    }
+    const response = await this.request('/auth/token', data, 'post');
+    if (response.token) {
+      const resp = await this.request(`/users/${username}`, updatedInfo, 'patch');
+      console.log(resp)
+      JoblyApi.token = response.token;
+      return resp;
+    } else {
+      return 'invalid'
+    }
+
+    
+  }
+
+
+
 
 
 
@@ -86,9 +112,9 @@ class JoblyApi {
 }
 
 // for now, put token ("testuser" / "password" on class)
-JoblyApi.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
-    "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
-    "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
+// JoblyApi.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
+//     "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
+//     "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
 
 
 export default JoblyApi;

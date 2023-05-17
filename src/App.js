@@ -13,7 +13,7 @@ function App() {
   const reload = () => {
     setTimeout(() => {
       window.location.reload();
-    }, 300)
+    }, 400)
   }
 
   return (

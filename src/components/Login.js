@@ -21,7 +21,7 @@ const Login = ({reload}) => {
       console.log(response)
       setTokenValue(response.token);
       setTimeout(() => {
-        navigate('/')
+        // navigate('/')
       }, 300)
       reload()
     } catch (e) {
