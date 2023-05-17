@@ -10,13 +10,16 @@ const CompaniesSearch = ({setCompanies}) => {
   const [minEmployees, setMinEmployees] = useState()
   const [maxEmployees, setMaxEmployees] = useState()
   const [query, setQuery] = useState()
+  const [searchContainerState, setSearchContainerState] = useState('search-container-closed')
 
 
   const openOrClose = () => {
     if (barState === 'open') {
       setBarState('closed')
+      setSearchContainerState('search-container-closed')
     } else {
       setBarState('open')
+      setSearchContainerState('search-container-open')
     }
   }
 
@@ -58,30 +61,40 @@ const CompaniesSearch = ({setCompanies}) => {
 
   if (barState === 'open') {
     return (
-      <div id="search-container">
+      <div id={searchContainerState}>
         <button onClick={openOrClose}>Close Search</button>
+        <br></br>
+        <br></br>
+        <br></br>
+        <div id="min-max-div">
+          <label>
+            Minimum Employees:
+            <br />
+            <input
+              type="number"
+              min={0}
+              id="minEmployees"
+              value={minEmployees}
+              onChange={(e) => setMinEmployees(parseInt(e.target.value))}
+            />
+          </label>
+          <br></br>
+          <label>
+            Maximum Employees:
+            <br />
+            <input
+              type="number"
+              min={0}
+              id="maxEmployees"
+              value={maxEmployees}
+              onChange={(e) => setMaxEmployees(parseInt(e.target.value))}
+            />
+          </label>
+        </div>
+        <br></br>
         <label>
-          Minimum Employees:
-          <input
-            type="number"
-            min={0}
-            id="minEmployees"
-            value={minEmployees}
-            onChange={(e) => setMinEmployees(parseInt(e.target.value))}
-          />
-        </label>
-        <label>
-          Maximum Employees:
-          <input
-            type="number"
-            min={0}
-            id="maxEmployees"
-            value={maxEmployees}
-            onChange={(e) => setMaxEmployees(parseInt(e.target.value))}
-          />
-        </label>
-        <label>
-          Query:
+          Company Name:
+          <br />
           <input
             type="text"
             id="query-field"
@@ -89,13 +102,18 @@ const CompaniesSearch = ({setCompanies}) => {
             onChange={(e) => setQuery(e.target.value)}
           />
         </label>
+        <br></br>
+        <br></br>
         <button onClick={getCompanies}>Search</button>
       </div>
     )
   } else {
     return (
-      <div>
+      <div id={searchContainerState}>
         <button onClick={openOrClose}>Open Search</button>
+        <br></br>
+        <br></br>
+        <br></br>
       </div>
     )
   }

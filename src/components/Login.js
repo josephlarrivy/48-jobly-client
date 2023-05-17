@@ -11,6 +11,8 @@ const Login = ({reload}) => {
   const [password, setPassword] = useState("");
   const [token, setTokenValue, removeToken, getToken, getDecodedToken] = useLocalStorage('token');
   const navigate = useNavigate();
+  const [passwordWarning, setPasswordWarning] = useState(null);
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -21,11 +23,12 @@ const Login = ({reload}) => {
       console.log(response)
       setTokenValue(response.token);
       setTimeout(() => {
-        // navigate('/')
+        navigate('/')
       }, 300)
       reload()
     } catch (e) {
       console.log(e);
+      setPasswordWarning('Invalied username/password')
     }
   };
 
@@ -55,6 +58,9 @@ const Login = ({reload}) => {
 
         <br></br>
         <br></br>
+        {password !== '' && passwordWarning && <p id="password-warning">{passwordWarning}</p>}
+
+        
         
         <button id="login-form-submit" type="submit">Log In</button>
       </form>

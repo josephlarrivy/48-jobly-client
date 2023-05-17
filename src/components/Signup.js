@@ -111,6 +111,8 @@ const Signup = ({reload}) => {
         {password !== '' && passwordWarning && <p id="password-warning">{passwordWarning}</p>}
         <br></br>
         {error && <p>{error}</p>}
+        <br></br>
+
         <button id="register-form-submit" type="submit">Register</button>
       </form>
     </div>

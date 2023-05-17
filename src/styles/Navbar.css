@@ -16,3 +16,8 @@
     color: darkgray;
     text-decoration: overline;
 }
+
+#nav-inner-container #nav-username {
+    margin-right: auto;
+    margin-left: 10px;
+}

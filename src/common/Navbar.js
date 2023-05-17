@@ -28,6 +28,7 @@ const NavBar = ({reload}) => {
   if (token) {
     return (
       <div id="nav-inner-container">
+        <p className="nav-item" id="nav-username">{username}</p>
         <Link
           to="/"
           className={
@@ -58,7 +59,7 @@ const NavBar = ({reload}) => {
             location.pathname === "/profile" ? "nav-item active" : "nav-item"
           }
         >
-          {username}
+          Profile
         </Link>
         <p
           className="nav-item"
@@ -70,6 +71,7 @@ const NavBar = ({reload}) => {
   } else {
     return (
       <div id="nav-inner-container">
+        <p className="nav-item" id="nav-username"></p>
         <Link
           to="/"
           className={
