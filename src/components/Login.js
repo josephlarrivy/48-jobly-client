@@ -28,7 +28,7 @@ const Login = ({reload}) => {
       reload()
     } catch (e) {
       console.log(e);
-      setPasswordWarning('Invalied username/password')
+      setPasswordWarning('Invalid username/password')
     }
   };
 
