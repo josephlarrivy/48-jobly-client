@@ -26,9 +26,11 @@ const CompanyDetail = () => {
   if (companyInfo) {
     return (
       <div key={companyInfo.handle} id='jobs-list-container'>
-        <h2>{companyInfo.name}</h2>
-        <p>{companyInfo.description}</p>
-        <p>{companyInfo.numEmployees}</p>
+        <div id="company-detail-info-continer">
+          <h2>{companyInfo.name}</h2>
+          <p>{companyInfo.description}</p>
+          <p>{companyInfo.numEmployees} employees</p>
+        </div>
         {companyInfo.jobs && companyInfo.jobs.map(job => {
           return(
             <div className="job-card-outer-container">
