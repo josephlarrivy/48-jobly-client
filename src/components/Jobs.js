@@ -20,7 +20,7 @@ const Jobs = () => {
 
 
   return (
-    <>
+    <div style={{ paddingBottom: '30px' }}>
       {allJobs && allJobs.map(job => {
         return (
           <JobCard
@@ -34,7 +34,7 @@ const Jobs = () => {
           />
         )
       })}
-    </>
+    </div>
   )
   
   

@@ -20,7 +20,7 @@ const CompanyList = () => {
   }, [])
 
   return (
-    <div>
+    <div style={{paddingBottom: '30px'}}>
       <h1>Companies</h1>
       <CompaniesSearch
         setCompanies={setCompanies}
